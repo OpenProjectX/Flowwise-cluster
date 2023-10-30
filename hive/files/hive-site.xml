@@ -9,7 +9,7 @@
     </property>
     <property>
         <name>hive.metastore.warehouse.dir</name>
-        <value>/tmp/</value>
+        <value>/data/hadoop/</value>
     </property>
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
@@ -37,10 +37,10 @@
         <name>hive.metastore.event.db.notification.api.auth</name>
         <value>false</value>
     </property>
-    <property>
-        <name>hive.server2.authentication</name>
-        <value>NOSASL</value>
-    </property>
+<!--    <property>-->
+<!--        <name>hive.server2.authentication</name>-->
+<!--        <value>NOSASL</value>-->
+<!--    </property>-->
     <property>
         <name>fs.s3a.impl</name>
         <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>

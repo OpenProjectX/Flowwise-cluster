@@ -2,6 +2,8 @@
 
 set +ex
 
+#$HIVE_HOME/bin/init-hive-dfs.sh
+
 $HIVE_HOME/bin/schematool -dbType postgres -initSchema
 $HIVE_HOME/hcatalog/sbin/hcat_server.sh start &
 

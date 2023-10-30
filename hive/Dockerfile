@@ -7,16 +7,15 @@ ENV APACHE_MIRROR=https://mirrors.sustech.edu.cn/apache
 ENV MAVEN_MIRROR=https://repo.huaweicloud.com/repository/maven
 ENV HADOOP_VERSION=3.3.6
 ENV HADOOP_HOME /opt/hadoop-$HADOOP_VERSION
-ENV HADOOP_CONF_DIR=$HADOOP_HOME/conf
+#ENV HADOOP_CONF_DIR=$HADOOP_HOME/conf
 ENV PATH $PATH:$HADOOP_HOME/bin
 RUN curl -L \
   "$APACHE_MIRROR/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz" \
-    | tar xvfz - -C /opt/ \
-  && rm -rf $HADOOP_HOME/share/doc \
-  && chown -R root:root $HADOOP_HOME \
+    | tar xvfz - -C /opt/
+RUN chown -R root:root $HADOOP_HOME \
   && mkdir -p $HADOOP_HOME/logs \
-  && mkdir -p $HADOOP_CONF_DIR \
-  && chmod 777 $HADOOP_CONF_DIR \
+#  && mkdir -p $HADOOP_CONF_DIR \
+#  && chmod 777 $HADOOP_CONF_DIR \
   && chmod 777 $HADOOP_HOME/logs
 
 # Install Apache Hive
@@ -56,6 +55,13 @@ ADD files/hive-site.xml $HIVE_CONF_DIR/
 
 ADD files/init-hive.sh /
 RUN chmod +x /init-hive.sh
+
+#RUN rm -rf $HADOOP_HOME/etc/hadoop/core-site.xml
+#ADD files/core-site.xml $HADOOP_HOME/etc/hadoop/
+#RUN rm -rf $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+#ADD files/hdfs-site.xml $HADOOP_HOME/etc/hadoop/
+
+#RUN $HADOOP_HOME/bin/hdfs namenode -format
 
 EXPOSE 9083
 EXPOSE 10000

@@ -3,10 +3,13 @@ services:
   hive:
     build: ./hive
     entrypoint: /init-hive.sh
+#    volumes:
+#      - hdfs-data:/data/hadoop
     ports:
       - "9083:9083"
       - "10000:10000"
       - "10002:10002"
+      - "8000:9000"
     depends_on:
       - postgres
       - minio
@@ -55,6 +58,7 @@ services:
       - '8080:8080'
     volumes:
       - ./trino/coordinator/etc:/etc/trino:ro
+      - hdfs-data:/data/hadoop:rw
     depends_on:
       - hive
       - trino-worker
@@ -68,6 +72,7 @@ services:
     image: "trinodb/trino:latest"
     volumes:
       - ./trino/worker/etc:/etc/trino:ro
+#      - hdfs-data:/data/hadoop
     depends_on:
       - hive
     deploy:
@@ -89,10 +94,22 @@ services:
 #        limits:
 #          cpus: "1"
 #          memory: 1G
+  flowise:
+    build: ./flowise
+    ports:
+      - "3000:3000"
+    depends_on:
+      - trino-coordinator
+    environment:
+      LOG_LEVEL: debug
+    command: /bin/sh -c "sleep 3; flowise start"
+
 volumes:
   minio-data:
     driver: local
   postgres-data:
     driver: local
   superset-data:
+    driver: local
+  hdfs-data:
     driver: local
