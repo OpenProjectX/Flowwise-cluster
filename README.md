@@ -1,9 +1,9 @@
-# Cloud-native Trino (prestosql) + Hive + Minio + Superset
+# Cloud-native Trino (prestosql) + Hive + Minio + Flowise
 ## Technologies:
 ### Query Engine is `Trino (PrestoSQL)`
 ### Metadata Store is `Apache Hive`
 ### Object Storage is `Minio (S3 compatable)`
-### Data Viz is `Apache Superset`
+### AI tool is `Flowise AI`
 
 ## Get things running
 1. Clone repo
