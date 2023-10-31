@@ -5,6 +5,7 @@ import dev.langchain4j.model.chat.ChatLanguageModel
 import dev.langchain4j.model.openai.OpenAiChatModel
 import dev.langchain4j.service.AiServices
 import io.github.openprojectx.ai.trino.assistant.client.ChatGPTClient
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import java.net.InetSocketAddress
@@ -17,9 +18,9 @@ import java.time.Duration
 class AppConfig {
 
     @Bean
-    fun chatGPTClient(): ChatGPTClient {
+    fun chatGPTClient(@Value("\${langchain.openai-api-key}") openaiAPIKey: String): ChatGPTClient {
         val builder: OpenAiChatModel.OpenAiChatModelBuilder = OpenAiChatModel.builder()
-            .apiKey(System.getenv("openai_api_key"))
+            .apiKey(openaiAPIKey)
             .timeout(Duration.ofSeconds(60))
 
         System.getenv("http_proxy")?.let { httpProxy ->

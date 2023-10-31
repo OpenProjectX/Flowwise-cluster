@@ -14,3 +14,6 @@ trino:
       - system
     schemas:
       - information_schema
+
+langchain:
+  openai-api-key: ${openai_api_key}

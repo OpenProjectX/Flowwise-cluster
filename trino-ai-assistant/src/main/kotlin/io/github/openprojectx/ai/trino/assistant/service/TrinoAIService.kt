@@ -4,7 +4,6 @@ import io.github.openprojectx.ai.trino.assistant.client.ChatGPTClient
 import io.github.openprojectx.ai.trino.assistant.repository.TrinoRepo
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVPrinter
-import org.apache.commons.io.IOUtils.writer
 import org.springframework.stereotype.Service
 import java.io.StringWriter
 
