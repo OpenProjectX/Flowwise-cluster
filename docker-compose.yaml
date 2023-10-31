@@ -70,8 +70,8 @@ services:
       LOG_LEVEL: debug
     command: /bin/sh -c "sleep 3; flowise start"
 
-  autogen:
-    build: ./autogen
+#  autogen:
+#    build: ./autogen
 
 volumes:
   minio-data:
