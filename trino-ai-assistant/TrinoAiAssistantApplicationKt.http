@@ -1,0 +1,21 @@
+GET http://localhost:9080/trino/v3/api-docs
+Accept: application/x-yaml
+
+<> 2023-11-01T070607.200.json
+
+###
+
+GET http://localhost:9080/trino/v3/api-docs.yaml
+Accept: application/vnd.oai.openapi
+
+<> 2023-11-01T070626.200.yaml
+
+###
+GET http://localhost:9080/trino/table/schema
+
+<> 2023-11-01T080549.200.sql
+
+
+###
+POST http://localhost:9080/trino/sql
+Content-Type: application/sql
