@@ -53,7 +53,7 @@ class DatabaseResource(
         return trinoAIService.getTableSchemas()
     }
 
-    @GetMapping("/answer")
+//    @GetMapping("/answer")
     fun answer(question: String): String {
         return trinoAIService.answer(question)
 

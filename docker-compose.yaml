@@ -78,6 +78,7 @@ services:
       openai_api_key: your openai key
     ports:
       - "9080:9080"
+      - "7080:7080"
 
 volumes:
   minio-data:

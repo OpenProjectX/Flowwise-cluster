@@ -5,17 +5,17 @@ Accept: application/x-yaml
 
 ###
 
-GET http://localhost:9080/trino/v3/api-docs.yaml
+GET http://trino-ai-assistant:7080/trino/v3/api-docs.yaml
 Accept: application/vnd.oai.openapi
 
 <> 2023-11-01T070626.200.yaml
 
 ###
-GET http://localhost:9080/trino/table/schema
+GET http://trino-ai-assistant:7080/trino/table/schema
 
 <> 2023-11-01T080549.200.sql
 
 
 ###
-POST http://localhost:9080/trino/sql
+POST http://trino-ai-assistant:9080/trino/sql
 Content-Type: application/sql
